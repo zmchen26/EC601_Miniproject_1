@@ -11,9 +11,9 @@ from PIL import Image
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/Users/zhangmingchen/desktop/directed-truck-224723-e8fd8af459c9.json"
 
 consumer_key = "enter consumer key"
-consumer_secret = "enter consumer secret"
+consumer_secret = "enter consumer secrete"
 access_key = "enter access key"
-access_secret = "enter access secret"
+access_secret = "enter access secrete"
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_key, access_secret)
@@ -37,7 +37,7 @@ def twitter_api(screen_name):
         alltweets.extend(new_tweets)
         oldest = alltweets[-1].id - 1
         print("...%s tweets downloaded so far" % len(alltweets))
-        if len(alltweets)>500:
+        if len(alltweets)>50:
             break
 
     pic_url = []
@@ -59,8 +59,7 @@ def twitter_api(screen_name):
     return len(pic_url)
 
 
-def make_video(screen_name):
-    pic_num = twitter_api(screen_name)
+def make_video(screen_name, pic_num):
     for i in range(pic_num):
         pic = Image.open('./twitterpic/pic_' + str(i) + '.jpg').resize([500,500])
         pic.save('./twitterpic/pic_' + str(i) + '.jpg')
@@ -89,8 +88,9 @@ def video_analysis(screen_name):
 
 
 if __name__ == '__main__':
-    screen_name = '@mfaboston'
-    twitter_api(screen_name)
-    make_video(screen_name)
+    screen_name = '@taylorswift13'
+    # screen_name = '@vangoghartist'
+    pic_num = twitter_api(screen_name)
+    make_video(screen_name, pic_num)
     video_analysis(screen_name)
 
