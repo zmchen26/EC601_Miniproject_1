@@ -1,4 +1,4 @@
-# EC601_Miniproject_1
+# EC601_Miniproject_1 & Miniproject_3 
 This project is to grab pictures from twitter, convert those pictures into video and analyse the content of the video using Google Vision API. 
 
 Please run this file in Python3.6 and make sure you have all the packages below:
